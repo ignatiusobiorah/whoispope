@@ -11,11 +11,24 @@ const UsersInfo = ({ users, loading }: Props) => {
   }
   return (
     <ul className="list-group mb-4">
-      {users.map((user: any) => (
-        <li key={user.id} className="list-group-item">
-          {user.name}
-        </li>
-      ))}
+      {users.map(
+        (user: {
+          id: React.Key | null | undefined;
+          name:
+            | string
+            | number
+            | boolean
+            | React.ReactElement<any, string | React.JSXElementConstructor<any>>
+            | React.ReactFragment
+            | React.ReactPortal
+            | null
+            | undefined;
+        }) => (
+          <li key={user.id} className="list-group-item">
+            {user.name}
+          </li>
+        )
+      )}
     </ul>
   );
 };
